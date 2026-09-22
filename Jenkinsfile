@@ -48,19 +48,12 @@ pipeline {
             }
         }
 
-        stage('4. Deploy Locally') {
+        stage('4. Deploy with ansible') {
             steps {
                 sh """
-                    docker stop jenkins-docker-app || true
-                    docker rm jenkins-docker-app || true
-
-                    docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
-
-                    docker run -d \
-                        --name jenkins-docker-app \
-                        -p 5000:5000 \
-                        --restart always \
-                        ${DOCKER_IMAGE}:${DOCKER_TAG}
+                    ansible-playbook \
+                      -i ansible/inventory \
+                      ansible/deploy.ymk
                 """
             }
         }

@@ -1,0 +1,29 @@
+```
+---
+- name: Deploy Docker application
+  hosts: web
+  become: true
+
+  tasks:
+
+    - name: Pull Docker image
+      community.docker.docker_image:
+        name: maximgonik/jenkins-docker-app
+        tag: latest
+        source: pull
+
+    - name: Remove old container
+      community.docker.docker_container:
+        name: jenkins-docker-app
+        state: absent
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: jenkins-docker-app
+        image: maximgonik/jenkins-docker-app:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "5000:5000"
+```
+
