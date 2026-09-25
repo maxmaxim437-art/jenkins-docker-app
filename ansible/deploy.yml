@@ -1,7 +1,7 @@
 
 
 - name: Deploy Docker application
-  hosts: local
+  hosts: web
 
   tasks:
 
