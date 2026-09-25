@@ -53,7 +53,7 @@ pipeline {
                 sh """
                     ansible-playbook \
                       -i ansible/inventory \
-                      ansible/deploy.ymk
+                      ansible/deploy.yml
                 """
             }
         }
