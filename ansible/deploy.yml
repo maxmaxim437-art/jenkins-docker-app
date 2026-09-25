@@ -1,5 +1,5 @@
-```
----
+
+
 - name: Deploy Docker application
   hosts: web
   become: true
@@ -25,5 +25,5 @@
         restart_policy: always
         ports:
           - "5000:5000"
-```
+
 
