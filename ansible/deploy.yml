@@ -1,8 +1,7 @@
 
 
 - name: Deploy Docker application
-  hosts: web
-  become: true
+  hosts: local
 
   tasks:
 
